@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参加者が含まれた行を削除</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>「参加者」が含まれた行を削除</h1>
+    <p>テキストデータを入力し、「参加者」が含まれる行を削除します。</p>
+    
+    <textarea id="inputText" placeholder="ここにテキストデータを入力してください..."></textarea>
+    <button onclick="removeLines()">行を削除</button>
+
+    <h2>結果</h2>
+    <div id="output"></div>
+
+    <script>
+        function removeLines() {
+            // 入力テキストを取得
+            const inputText = document.getElementById("inputText").value;
+            // 各行を分割
+            const lines = inputText.split("\n");
+            // "参加者" が含まれていない行だけを保持
+            const filteredLines = lines.filter(line => !line.includes("参加者"));
+            // 結果を表示
+            document.getElementById("output").textContent = filteredLines.join("\n");
+        }
+    </script>
+</body>
+</html>
